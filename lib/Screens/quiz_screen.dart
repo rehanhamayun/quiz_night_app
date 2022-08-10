@@ -21,6 +21,7 @@ class _QuizScreenState extends State<QuizScreen> {
   late Future quiz;
 
   int points = 0;
+  var rightones = [];
 
   var isLoaded = false;
 
@@ -82,7 +83,7 @@ class _QuizScreenState extends State<QuizScreen> {
             gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [Colors.blue, Colors.orange],
+          colors: [Colors.red, Colors.orange],
         )),
         child: FutureBuilder(
           future: quiz,
@@ -180,8 +181,9 @@ class _QuizScreenState extends State<QuizScreen> {
                               if (answer.toString() ==
                                   optionsList[index].toString()) {
                                 optionsColor[index] = Colors.green;
+                                rightones.add(answer[index].length);
 
-                                points = points + 10;
+                                //points = points + 10;
                               } else {
                                 optionsColor[index] = Colors.red;
                               }
@@ -210,7 +212,7 @@ class _QuizScreenState extends State<QuizScreen> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: headingText(
-                              color: blue,
+                              color: Colors.black,
                               size: 18,
                               text: optionsList[index].toString(),
                             ),
@@ -218,6 +220,12 @@ class _QuizScreenState extends State<QuizScreen> {
                         );
                       },
                     ),
+
+                    headingText(
+                        text:
+                            "Score: ${rightones.length} out of ${data.length} ",
+                        fontWeight: FontWeight.bold,
+                        size: 20),
                   ],
                 ),
               );
