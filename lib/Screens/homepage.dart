@@ -11,21 +11,21 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: 60,
+            height: 100,
           ),
           Center(
             child: Image.asset(
               "assets/images/test.png",
-              height: 270,
-              width: 270,
+              height: 200,
+              width: 200,
             ),
           ),
           SizedBox(
-            height: 70,
+            height: 100,
           ),
           headingText(
             text: "Grab your friends",
-            size: 28,
+            size: 24,
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
           normalText(
               text:
                   "Invite your friends to a battle \n of wits. The Smartest Wins!",
-              size: 18,
+              size: 12,
               color: Colors.grey.withOpacity(0.7)),
           SizedBox(
             height: 40,
@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => QuizScreen()));
             },
             child: Container(
-              height: 80,
+              height: 60,
               width: 300,
               decoration: BoxDecoration(
                 color: Colors.red,
