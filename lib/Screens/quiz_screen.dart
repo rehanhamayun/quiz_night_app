@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:app_kwiz/ProviderController/api_services.dart';
+import 'package:app_kwiz/ProviderController/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../configs/colors.dart';
 import '../configs/texts.dart';
@@ -22,6 +24,8 @@ class _QuizScreenState extends State<QuizScreen> {
 
   int points = 0;
   var rightones = [];
+  List<Icon> tick = [];
+  List<Icon> cross = [];
 
   var isLoaded = false;
 
@@ -72,6 +76,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<DataClass>(context);
     var size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -138,17 +143,25 @@ class _QuizScreenState extends State<QuizScreen> {
                             ),
                           ],
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(color: lightgrey, width: 2),
+                        GestureDetector(
+                          onTap: () {
+                            provider.addQuestiontoLiked(
+                                data[currentQuestionIndex]["question"]);
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              border: Border.all(color: lightgrey, width: 2),
+                            ),
+                            child: TextButton.icon(
+                                onPressed: null,
+                                icon: const Icon(CupertinoIcons.heart_fill,
+                                    color: Colors.white, size: 18),
+                                label: normalText(
+                                    color: Colors.white,
+                                    size: 14,
+                                    text: "Like")),
                           ),
-                          child: TextButton.icon(
-                              onPressed: null,
-                              icon: const Icon(CupertinoIcons.heart_fill,
-                                  color: Colors.white, size: 18),
-                              label: normalText(
-                                  color: Colors.white, size: 14, text: "Like")),
                         ),
                       ],
                     ),
@@ -182,10 +195,13 @@ class _QuizScreenState extends State<QuizScreen> {
                                   optionsList[index].toString()) {
                                 optionsColor[index] = Colors.green;
                                 rightones.add(answer[index].length);
+                                // TICK CROSS.
+                                tick.add(Icon(Icons.check));
 
                                 //points = points + 10;
                               } else {
                                 optionsColor[index] = Colors.red;
+                                cross.add(Icon(Icons.close));
                               }
 
                               if (currentQuestionIndex < data.length - 1) {
@@ -226,6 +242,9 @@ class _QuizScreenState extends State<QuizScreen> {
                             "Score: ${rightones.length} out of ${data.length} ",
                         fontWeight: FontWeight.bold,
                         size: 20),
+                    SizedBox(
+                      height: 20,
+                    ),
                   ],
                 ),
               );
