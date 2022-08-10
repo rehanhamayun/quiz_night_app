@@ -245,6 +245,67 @@ class _QuizScreenState extends State<QuizScreen> {
                     SizedBox(
                       height: 20,
                     ),
+                    //RESULTS
+                    GestureDetector(
+                      onTap: () {
+                        showCupertinoDialog(
+                          barrierDismissible: true,
+                          context: context,
+                          builder: (context) {
+                            return CupertinoAlertDialog(
+                              title: Text("Results"),
+                              content: Column(
+                                children: [
+                                  Container(
+                                    height: 100,
+                                    width: 100,
+                                    child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: tick.length,
+                                        itemBuilder: (context, index) {
+                                          return Icon(
+                                            Icons.check,
+                                            color: Colors.green,
+                                          );
+                                        }),
+                                  ),
+                                  //
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    height: 100,
+                                    width: 100,
+                                    child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: cross.length,
+                                        itemBuilder: (context, index) {
+                                          return Icon(
+                                            Icons.close,
+                                            color: Colors.red,
+                                          );
+                                        }),
+                                  ),
+                                ],
+                              ),
+                              scrollController: ScrollController(),
+                            );
+                          },
+                        );
+                      },
+                      child: Container(
+                        height: 60,
+                        width: 300,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Center(
+                          child: headingText(
+                              color: Colors.black, text: "Results", size: 24),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               );
