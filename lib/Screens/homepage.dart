@@ -10,8 +10,8 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(
-            height: 100,
+          const SizedBox(
+            height: 150,
           ),
           Center(
             child: Image.asset(
@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
               width: 200,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 100,
           ),
           headingText(
@@ -37,8 +37,8 @@ class HomePage extends StatelessWidget {
                   "Invite your friends to a battle \n of wits. The Smartest Wins!",
               size: 12,
               color: Colors.grey.withOpacity(0.7)),
-          SizedBox(
-            height: 40,
+          const SizedBox(
+            height: 100,
           ),
           GestureDetector(
             onTap: () {

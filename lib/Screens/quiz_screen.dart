@@ -104,11 +104,9 @@ class _QuizScreenState extends State<QuizScreen> {
               }
 
               return SingleChildScrollView(
-
                 child: Padding(
-                  padding: const EdgeInsets.only(top:8.0),
+                  padding: const EdgeInsets.only(top: 8.0),
                   child: Column(
-
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -118,8 +116,8 @@ class _QuizScreenState extends State<QuizScreen> {
                             width: 50,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(40),
-                              border:
-                                  Border.all(color: Colors.lightGreen, width: 2),
+                              border: Border.all(
+                                  color: Colors.lightGreen, width: 2),
                             ),
                             child: IconButton(
                                 onPressed: () {
@@ -143,8 +141,8 @@ class _QuizScreenState extends State<QuizScreen> {
                                 height: 60,
                                 child: CircularProgressIndicator(
                                   value: seconds / 30,
-                                  valueColor:
-                                      const AlwaysStoppedAnimation(Colors.white),
+                                  valueColor: const AlwaysStoppedAnimation(
+                                      Colors.white),
                                 ),
                               ),
                             ],
@@ -160,7 +158,7 @@ class _QuizScreenState extends State<QuizScreen> {
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                               // border: Border,
+                                // border: Border,
                               ),
                               child: TextButton.icon(
                                   onPressed: null,
@@ -190,6 +188,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           size: 16,
                           text: data[currentQuestionIndex]["question"]),
                       const SizedBox(height: 20),
+
                       ListView.builder(
                         shrinkWrap: true,
                         itemCount: optionsList.length,
@@ -205,7 +204,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                   optionsColor[index] = Colors.green;
                                   rightones.add(answer[index].length);
                                   // TICK CROSS.
-                                  tick.add(Icon(Icons.check));
+                                  tick.add(const Icon(Icons.check));
 
                                   //points = points + 10;
                                 } else {
@@ -214,12 +213,13 @@ class _QuizScreenState extends State<QuizScreen> {
                                 }
 
                                 if (currentQuestionIndex < data.length - 1) {
-                                  Future.delayed(const Duration(seconds: 1), () {
+                                  Future.delayed(const Duration(seconds: 1),
+                                      () {
                                     isLoaded = false;
                                     currentQuestionIndex++;
                                     resetColors();
                                     timer!.cancel();
-                                    seconds = 60;
+                                    seconds = 30;
                                     startTimer();
                                   });
                                 } else {
@@ -231,7 +231,8 @@ class _QuizScreenState extends State<QuizScreen> {
                               margin: const EdgeInsets.only(bottom: 20),
                               alignment: Alignment.center,
                               width: size.width - 100,
-                              padding: const EdgeInsets.fromLTRB(30,10,30,10),
+                              padding:
+                                  const EdgeInsets.fromLTRB(30, 10, 30, 10),
                               decoration: BoxDecoration(
                                 color: optionsColor[index],
                                 borderRadius: BorderRadius.circular(12),
@@ -251,7 +252,7 @@ class _QuizScreenState extends State<QuizScreen> {
                               "Score: ${rightones.length} out of ${data.length} ",
                           fontWeight: FontWeight.bold,
                           size: 15),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       //RESULTS
@@ -272,24 +273,24 @@ class _QuizScreenState extends State<QuizScreen> {
                                           scrollDirection: Axis.horizontal,
                                           itemCount: tick.length,
                                           itemBuilder: (context, index) {
-                                            return Icon(
+                                            return const Icon(
                                               Icons.check,
                                               color: Colors.green,
                                             );
                                           }),
                                     ),
                                     //
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
-                                    Container(
+                                    SizedBox(
                                       height: 100,
                                       width: 100,
                                       child: ListView.builder(
                                           scrollDirection: Axis.horizontal,
                                           itemCount: cross.length,
                                           itemBuilder: (context, index) {
-                                            return Icon(
+                                            return const Icon(
                                               Icons.close,
                                               color: Colors.red,
                                             );
