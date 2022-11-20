@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           normalText(

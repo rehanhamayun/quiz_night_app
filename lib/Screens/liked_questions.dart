@@ -13,13 +13,19 @@ class LikedQuestions extends StatelessWidget {
         children: [
           Expanded(
             child: ListView.builder(
-                itemCount: provider.likedOnes.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                      child: Text(
+              itemCount: provider.likedOnes.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: Text(
                     provider.likedOnes[index].toString(),
-                  ));
-                }),
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 19,
+                        fontWeight: FontWeight.bold),
+                  ),
+                );
+              },
+            ),
           )
         ],
       ),
